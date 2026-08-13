@@ -5,9 +5,34 @@
 	<title>テスト</title>
 </head>
 <body>
-	<form action="/tasks" method="post">
-    <input type="text" name="title">
-    <button type="submit">追加</button>
-</form>
+	<h1>タスク管理</h1>
+
+	<form action="/task" method="post">
+		<label for = "taskName">タスク名</label>
+		<br>
+		<input type="text" id = "taskName" name="taskName">
+		<br>
+		<label for ="period">期限</label>
+		<br>
+		<input type="date" id = "period" name = "period">
+		<br>
+		<label for ="priority">優先度</label>
+		<br>
+		<select id = "priority" name = "priority">
+			<option value="high">高</option>
+			<option value="medium">中</option>
+			<option value="low">低</option>
+    	</select>
+		<br>
+		<label for ="status">ステータス</label>
+		<br>
+		<select id="status" name="status">
+			<option value="not_started">未着手</option>
+			<option value="in_progress">進行中</option>
+			<option value="completed">完了</option>
+    	</select>
+		<br><br>
+		<button type="submit">追加</button>
+	</form>
 </body>
 </html>
