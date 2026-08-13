@@ -12,14 +12,12 @@ public class TaskController {
 
     @GetMapping("/task")
     private String display() {
-        return "/index.html";
+        return "index";
     }
 
     @PostMapping("/task")
     public String showTask(@ModelAttribute TaskDto dto, Model model) {
-
         model.addAttribute("task", dto);
-
-        return "/task-result";
+        return "task-result";
     }
 }

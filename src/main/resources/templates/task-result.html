@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスク表示</title>
+</head>
+
+<body>
+    <h1>タスク登録結果</h1>
+
+    <p>タスク名：<span th:text="${task.taskName}"></span></p>
+    <p>期限：<span th:text="${task.period}"></span></p>
+    <p>優先度：<span th:text="${task.priority}"></span></p>
+    <p>ステータス：<span th:text="${task.status}"></span></p>
+</body>
+
+</html>
