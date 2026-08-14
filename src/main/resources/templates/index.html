@@ -8,15 +8,15 @@
 
 <body>
 	<h1>タスク管理</h1>
-	//th:はThymeleafを使用している
-	//Javaから受け取ったデータを表示させるため
-	//@はURL、$はデータ
+	<!--th:はThymeleafを使用している
+	Javaから受け取ったデータを表示させるため
+	@はURL、$はデータ -->
 	<form th:action="@{/task}" method="post" th:object="${task}">
 		<label for="taskName">タスク名</label>
 		<br>
 		<input type="text" id="taskName" name="taskName">
-		//fieldsはth:objectの中身
-		//*はそのクラスのフィールドを探す
+		<!--fieldsはth:objectの中身
+		*はそのクラスのフィールドを探す-->
 		<p th:if="${#fields.hasErrors('taskName')}" th:errors="*{taskName}"></p>
 		<br>
 		<label for="period">期限</label>
@@ -41,6 +41,11 @@
 		<br><br>
 		<button type="submit">追加</button>
 	</form>
+	<form th:action="@{/tasks}" method="get">
+		<br>
+		<button type="submit">一覧</button>
+	</form>
+	
 </body>
 
 </html>

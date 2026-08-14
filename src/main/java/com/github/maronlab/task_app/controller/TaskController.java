@@ -1,5 +1,8 @@
 package com.github.maronlab.task_app.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,10 +15,11 @@ import jakarta.validation.Valid;
 
 @Controller
 public class TaskController {
+    private List<TaskDto> taskList = new ArrayList<>();
 
     @GetMapping("/task")
-    //HTML側でth:object="${task}"を書いている＝オブジェクトを作らないと
-    //Thymeleafが見つけられない
+    // HTML側でth:object="${task}"を書いている＝オブジェクトを作らないと
+    // Thymeleafが見つけられない
     private String display(Model model) {
         model.addAttribute("task", new TaskDto());
         return "index";
@@ -23,16 +27,28 @@ public class TaskController {
 
     @PostMapping("/task")
     public String showTask(
-            //ModelAttributeの引数は明示的に合わせている
-            //エラーになった際に扱えるようにするため
+            // ModelAttributeの引数は明示的に合わせている
+            // エラーになった際に扱えるようにするため
             @Valid @ModelAttribute("task") TaskDto dto,
-            //BindingResultはModelAttribute直後のクラスを認識してくれる
+            // BindingResultはModelAttribute直後のクラスを認識してくれる
             BindingResult result,
             Model model) {
         if (result.hasErrors()) {
             return "index";
         }
+
+        taskList.add(dto);
         model.addAttribute("task", dto);
+
         return "task-result";
     }
+
+    @GetMapping("/tasks")
+    public String getMethodName(Model model) {
+
+        model.addAttribute("tasks", taskList);
+
+        return "task-List";
+    }
+
 }
