@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<title>テスト</title>
 </head>
+
 <body>
 	<h1>タスク管理</h1>
 
-	<form action="/task" method="post">
-		<label for = "taskName">タスク名</label>
+	<form th:action="@{/task}" method="post" th:object="${task}">
+		<label for="taskName">タスク名</label>
 		<br>
-		<input type="text" id = "taskName" name="taskName">
+		<input type="text" id="taskName" name="taskName">
+		<p th:if="${#fields.hasErrors('taskName')}" th:errors="*{taskName}"></p>
 		<br>
-		<label for ="period">期限</label>
+		<label for="period">期限</label>
 		<br>
-		<input type="date" id = "period" name = "period">
+		<input type="date" id="period" name="period">
 		<br>
-		<label for ="priority">優先度</label>
+		<label for="priority">優先度</label>
 		<br>
-		<select id = "priority" name = "priority">
+		<select id="priority" name="priority">
 			<option value="high">高</option>
 			<option value="medium">中</option>
 			<option value="low">低</option>
-    	</select>
+		</select>
 		<br>
-		<label for ="status">ステータス</label>
+		<label for="status">ステータス</label>
 		<br>
 		<select id="status" name="status">
 			<option value="not_started">未着手</option>
 			<option value="in_progress">進行中</option>
 			<option value="completed">完了</option>
-    	</select>
+		</select>
 		<br><br>
 		<button type="submit">追加</button>
 	</form>
 </body>
+
 </html>

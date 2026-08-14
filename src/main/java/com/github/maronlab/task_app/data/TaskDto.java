@@ -2,7 +2,10 @@ package com.github.maronlab.task_app.data;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class TaskDto {
+    @NotBlank(message = "タスク名は必須です")
     private String taskName;
     private LocalDate period;
     private String priority;
