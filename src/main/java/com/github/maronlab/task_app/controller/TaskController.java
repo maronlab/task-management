@@ -14,6 +14,8 @@ import jakarta.validation.Valid;
 public class TaskController {
 
     @GetMapping("/task")
+    //HTML側でth:object="${task}"を書いている＝オブジェクトを作らないと
+    //Thymeleafが見つけられない
     private String display(Model model) {
         model.addAttribute("task", new TaskDto());
         return "index";
@@ -21,7 +23,10 @@ public class TaskController {
 
     @PostMapping("/task")
     public String showTask(
+            //ModelAttributeの引数は明示的に合わせている
+            //エラーになった際に扱えるようにするため
             @Valid @ModelAttribute("task") TaskDto dto,
+            //BindingResultはModelAttribute直後のクラスを認識してくれる
             BindingResult result,
             Model model) {
         if (result.hasErrors()) {
