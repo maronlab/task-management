@@ -10,5 +10,9 @@
     <div th:each="task : ${tasks}">
         <p th:text="${task.taskName}"></p>
     </div>
+    <br>
+    <a th:href="@{/task}">
+         <button type="button">登録画面</button>
+    </a>
 </body>
 </html>

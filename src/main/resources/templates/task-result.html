@@ -13,6 +13,13 @@
     <p>期限：<span th:text="${task.period}"></span></p>
     <p>優先度：<span th:text="${task.priority}"></span></p>
     <p>ステータス：<span th:text="${task.status}"></span></p>
+
+    <a th:href="@{/task}">
+        <button type="button">登録画面</button>
+    </a>
+    <a th:href="@{/tasks}">
+        <button type="button">一覧</button>
+    </a>
 </body>
 
 </html>
